@@ -1,0 +1,89 @@
+{
+  "title": "The test maze",
+  "start": 0,
+  "places": [
+    {
+      "name": "The entrance",
+      "desc": "You are in front of a massive oak door. You are hungry.",
+      "image": "place0",
+      "final": false,
+      "actions": [
+        {
+          "action_name":"Sleep",
+          "next": 1
+        },
+        {
+          "action_name":"Open the door",
+          "next": 2
+        }
+
+      ]
+    },
+    {
+      "name": "The nap",
+      "desc": "You take a small nap. It's resting. But you're still hungry.",
+      "image": "place1",
+      "final": false,
+      "actions": [
+        {
+          "action_name":"Wake up",
+          "next": 0
+        }
+      ]
+    },
+    {
+      "name": "The corridor",
+      "desc": "You are in a corridor. You can either go to the left for the dining room, or to the right for the bedroom.",
+      "image": "place2",
+      "final": false,
+      "actions": [
+        {
+          "action_name":"The dining room",
+          "next": 4
+        },
+        {
+          "action_name":"The bedroom",
+          "next": 3
+        },
+        {
+          "action_name":"Go back outside",
+          "next": 0
+        }
+      ]
+    },
+    {
+      "name": "The bedroom",
+      "desc": "The bedroom has a bed, but no food is in sight.",
+      "image": "place3",
+      "final": false,
+      "actions": [
+        {
+          "action_name":"Go back from where I come.",
+          "next": 2
+        }      ]
+    },
+    {
+      "name": "The dining room",
+      "desc": "You are in a large dining room. There is a large plate of carrots on the table.",
+      "final": false,
+      "image": "place4",
+      "actions": [
+        {
+          "action_name":"The meal",
+          "next": 5
+        },
+        {
+          "action_name":"The corridor",
+          "next": 2
+        }
+      ]
+    },
+    {
+      "name": "The meal",
+      "desc": "You eat your plate of carrots. You are no more hungry. Bravo !",
+      "image": "place5",
+      "final": true,
+      "actions": []
+    }
+  ]
+}

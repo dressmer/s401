@@ -1,0 +1,88 @@
+{
+  "title": "Le test-labyrinthe",
+  "start": 0,
+  "places": [
+    {
+      "name": "L'entrée",
+      "desc": "Vous êtes devant une porte en chêne massif. Vous avez faim.",
+      "image": "place0",
+      "final": false,
+      "actions": [
+        {
+          "action_name":"Dormir",
+          "next": 1
+        },
+        {
+          "action_name":"Ouvrir",
+          "next": 2
+        }
+      ]
+    },
+    {
+      "name": "La sieste",
+      "desc": "Vous faites une petite sieste. C'est reposant. Mais ça ne nourrit pas.",
+      "image": "place1",
+      "final": false,
+      "actions": [
+        {
+          "action_name":"Se réveiller",
+          "next": 0
+        }
+      ]
+    },
+    {
+      "name": "Le couloir",
+      "desc": "Vous êtes dans un couloir. Vous devez soit aller à gauche vers le salon, soit aller à droite vers la chambre.",
+      "image": "place2",
+      "final": false,
+      "actions": [
+        {
+          "action_name":"Le salon",
+          "next": 4
+        },
+        {
+          "action_name":"La chambre",
+          "next": 3
+        },
+        {
+          "action_name":"L'extérieur",
+          "next": 0
+        }
+      ]
+    },
+    {
+      "name": "La chambre",
+      "desc": "La chambre comporte un lit, mais aucune trace de nourriture.",
+      "image": "place3",
+      "final": false,
+      "actions": [
+        {
+          "action_name":"Je retourne d'où je viens.",
+          "next": 2
+        }      ]
+    },
+    {
+      "name": "Le salon",
+      "desc": "Vous êtes dans un grand salon. Il y a une assiette de carottes sur la table.",
+      "final": false,
+      "image": "place4",
+      "actions": [
+        {
+          "action_name":"Le repas",
+          "next": 5
+        },
+        {
+          "action_name":"Le couloir",
+          "next": 2
+        }
+      ]
+    },
+    {
+      "name": "Le repas",
+      "desc": "Vous mangez l'assiette de carottes. Vous n'avez plus faim. Bravo !",
+      "image": "place5",
+      "final": true,
+      "actions": []
+    }
+  ]
+}
