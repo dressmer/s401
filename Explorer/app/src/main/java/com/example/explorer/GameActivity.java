@@ -23,11 +23,14 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Scanner;
 
 public class GameActivity extends AppCompatActivity {
     private JSONObject data;
     private int location = -1;
+    private HashMap<String, GameObject> inventory = new HashMap<>(); // itemId -> GameObject
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -117,12 +120,19 @@ public class GameActivity extends AppCompatActivity {
                 locationImage.setVisibility(View.GONE);
             }
 
+            // Create actions
             LinearLayout buttonsContainer = findViewById(R.id.buttons_container);
             JSONArray actions = locationObject.getJSONArray("actions");
             buttonsContainer.removeAllViews();
             for (int i = 0; i < actions.length(); i++) {
                 JSONObject action = actions.getJSONObject(i);
                 String actionName = action.getString("action_name");
+
+                // Check if the action requires anything
+                if (action.has("require")) {
+                    // TODO
+                }
+
                 Button button = new Button(this);
                 button.setText(actionName);
                 int next = action.getInt("next");
@@ -146,5 +156,68 @@ public class GameActivity extends AppCompatActivity {
         } catch (JSONException e) {
             e.printStackTrace();
         }
+    }
+
+    private boolean itemExists(String itemId) {
+        return (inventory.containsKey(itemId));
+    }
+
+    private GameObject getItem(String itemId) {
+        if (!itemExists(itemId)) {
+            return null;
+        }
+        return inventory.get(itemId);
+    }
+
+    private int getItemAmount(String itemId) {
+        if (!itemExists(itemId)) {
+            return 0;
+        }
+        return getItem(itemId).getAmount();
+    }
+
+    // Create the item in the inventory. If the item already exists (even if amount=0), returns false.
+    private boolean createItem(GameObject obj) {
+        String itemId = obj.getId();
+
+        // Check if the item doesn't exist, and if so, create it
+        if (!itemExists(itemId)) {
+            inventory.put(itemId, obj);
+            return true;
+        }
+        return false;
+    }
+
+    private boolean createItem(String itemId) {
+        // Check if the item doesn't exist, and if so, create it
+        if (itemExists(itemId)) {
+            return false;
+        }
+
+        // Create the item by getting all of its infos
+        try {
+            JSONObject objectsJSON = data.getJSONObject("items");
+            JSONObject objectJSON = objectsJSON.getJSONObject(itemId);
+            String name = objectJSON.getString("name");
+            // TODO: Add image
+            GameObject item = new GameObject(itemId, name);
+            createItem(item); // Add the item to the inventory hashmap
+        } catch (JSONException e) {
+            throw new RuntimeException(e);
+        }
+        return true;
+    }
+
+    // Adds an item to the inventory. Creates it if it doesn't exist.
+    private void addItem(String itemId, int amount) {
+        if (!itemExists(itemId)) {
+            createItem(itemId);
+        }
+        GameObject item = getItem(itemId);
+        item.setAmount(item.getAmount() + amount);
+    }
+
+    private void addItem(String itemId) {
+        addItem(itemId, 1);
     }
 }
