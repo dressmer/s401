@@ -130,6 +130,13 @@ public class GameActivity extends AppCompatActivity {
 
                 // Check if the action requires anything
                 if (action.has("require")) {
+                    JSONArray requireJSON = action.getJSONArray("require");
+                    for (int j = 0; j < requireJSON.length(); j++) {
+                        String requiredItemId = requireJSON.getString(j);
+                        if (getItemAmount(requiredItemId) >= 1) {
+
+                        }
+                    }
                     // TODO
                 }
 

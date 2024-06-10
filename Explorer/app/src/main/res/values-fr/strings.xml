@@ -6,4 +6,5 @@
     <string name="won_game">C\'est gagné !</string>
     <string name="count_games_played">"Parties jouées : "</string>
     <string name="count_games_won">"Parties gagnées : "</string>
+    <string name="text_button_requires">Nécessite :</string>
 </resources>
