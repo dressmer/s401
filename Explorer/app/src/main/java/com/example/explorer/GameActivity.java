@@ -150,6 +150,14 @@ public class GameActivity extends AppCompatActivity {
                     for (int j = 0; j < requireJSON.length(); j++) {
                         String requiredItemId = requireJSON.getString(j);
                         requirementItemIds[j] = requiredItemId;
+
+                        // Make sure the item exists, and if not, create it
+                        if (!itemExists(requiredItemId)) {
+                            createItem(requiredItemId);
+                            GameObject requiredItem = getItem(requiredItemId);
+                            requiredItem.setAmount(0); // Force amount to 0
+                        }
+
                         if (getItemAmount(requiredItemId) >= 1) {
                             GameObject requiredItem = getItem(requiredItemId);
 
@@ -201,6 +209,7 @@ public class GameActivity extends AppCompatActivity {
                  */
             }
 
+            // If final location, display a button to end the game!
             if (locationObject.getBoolean("final")) {
                 Button button = new Button(this);
                 button.setText(getResources().getString(R.string.won_game));
@@ -235,7 +244,9 @@ public class GameActivity extends AppCompatActivity {
         return getItem(itemId).getAmount();
     }
 
-    // Create the item in the inventory. If the item already exists (even if amount=0), returns false.
+    /* Creates the item in the inventory. If the item already exists (even if amount=0), returns false.
+     * If the item is created, an amount of 1 is set by default (by GameObject).
+     */
     private boolean createItem(GameObject obj) {
         String itemId = obj.getId();
 
@@ -247,6 +258,9 @@ public class GameActivity extends AppCompatActivity {
         return false;
     }
 
+    /* Creates the item in the inventory. If the item already exists (even if amount=0), returns false.
+     * If the item is created, an amount of 1 is set by default (by GameObject).
+     */
     private boolean createItem(String itemId) {
         // Check if the item doesn't exist, and if so, create it
         if (itemExists(itemId)) {
