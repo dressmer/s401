@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -17,6 +18,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+
+import com.google.android.material.card.MaterialCardView;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -124,29 +127,78 @@ public class GameActivity extends AppCompatActivity {
             LinearLayout buttonsContainer = findViewById(R.id.buttons_container);
             JSONArray actions = locationObject.getJSONArray("actions");
             buttonsContainer.removeAllViews();
+            LayoutInflater inflater = getLayoutInflater();
             for (int i = 0; i < actions.length(); i++) {
                 JSONObject action = actions.getJSONObject(i);
                 String actionName = action.getString("action_name");
 
+                // Add button
+                MaterialCardView buttonCard = (MaterialCardView) inflater.inflate(R.layout.button_card, buttonsContainer, false);
+                TextView buttonText = buttonCard.findViewById(R.id.buttonText);
+                buttonText.setText(actionName);
+
                 // Check if the action requires anything
+                LinearLayout additionalInfosLayout = buttonCard.findViewById(R.id.additionalInfosLayout);
+                String[] requirementItemIds;
                 if (action.has("require")) {
+                    additionalInfosLayout.setVisibility(View.VISIBLE);
+                    LinearLayout requirementsLayout = additionalInfosLayout.findViewById(R.id.requirementsLayout);
+
+                    // Get all the requirements for said action
                     JSONArray requireJSON = action.getJSONArray("require");
+                    requirementItemIds = new String[requireJSON.length()];
                     for (int j = 0; j < requireJSON.length(); j++) {
                         String requiredItemId = requireJSON.getString(j);
+                        requirementItemIds[j] = requiredItemId;
                         if (getItemAmount(requiredItemId) >= 1) {
+                            GameObject requiredItem = getItem(requiredItemId);
 
+                            TextView buttonCardRequirementtext = (TextView) inflater.inflate(R.layout.button_card_requirementtext, buttonCard, false);
+
+                            buttonCardRequirementtext.setText(requiredItem.getName());
+                            if (requiredItem.getAmount() >= 1) {
+                                // Player has enough of this item
+                                buttonCardRequirementtext.setTextColor(getColor(R.color.green));
+                            }
+                            else {
+                                // Player doesn't have the required item
+                                buttonCardRequirementtext.setTextColor(getColor(R.color.red));
+                            }
+
+                            requirementsLayout.addView(buttonCardRequirementtext);
                         }
                     }
                     // TODO
                 }
+                else {
+                    requirementItemIds = null;
+                    additionalInfosLayout.setVisibility(View.GONE);
+                }
 
+                int next = action.getInt("next");
+                buttonCard.setOnClickListener(view -> {
+                    // Remove items
+                    if (requirementItemIds != null) {
+                        for (int j = 0; j < requirementItemIds.length; j++) {
+                            GameObject itemObj = getItem(requirementItemIds[j]);
+                            itemObj.setAmount(itemObj.getAmount() - 1);
+                            Log.d("GameActivity", "Removed 1x itemId " + requirementItemIds[j] + " (left: " + itemObj.getAmount() + ")");
+                        }
+                    }
+                    setLocation(next);
+                });
+
+                buttonsContainer.addView(buttonCard);
+
+                /*
                 Button button = new Button(this);
                 button.setText(actionName);
-                int next = action.getInt("next");
+
                 button.setOnClickListener(view -> {
                     setLocation(next);
                 });
                 buttonsContainer.addView(button);
+                 */
             }
 
             if (locationObject.getBoolean("final")) {
