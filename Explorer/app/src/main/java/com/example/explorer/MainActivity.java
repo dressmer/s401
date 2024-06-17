@@ -68,7 +68,7 @@ public class MainActivity extends AppCompatActivity {
     private void startGameActivity(ActivityResultLauncher<Intent> mStartForResult) {
         Intent intent;
         intent = new Intent(this, GameActivity.class);
-        intent.putExtra("filename", "test");
+        intent.putExtra("filename", "data");
         //startActivity(intent);
 
 
