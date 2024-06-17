@@ -266,15 +266,18 @@ public class GameActivity extends AppCompatActivity {
 
             // If final location, display a button to end the game!
             if (locationObject.getBoolean("final")) {
-                Button button = new Button(this);
-                button.setText(getResources().getString(R.string.won_game));
-                button.setOnClickListener(view -> {
+                MaterialCardView buttonCard = (MaterialCardView) inflater.inflate(R.layout.button_card, buttonsContainer, false);
+                TextView buttonText = buttonCard.findViewById(R.id.buttonText);
+                buttonText.setText(getResources().getString(R.string.won_game));
+                LinearLayout additionalInfosLayout = buttonCard.findViewById(R.id.additionalInfosLayout);
+                additionalInfosLayout.setVisibility(View.GONE);
+                buttonCard.setOnClickListener(view -> {
                     Intent intent = new Intent();
                     intent.putExtra("win", true);
                     setResult(Activity.RESULT_OK, intent);
                     finish();
                 });
-                buttonsContainer.addView(button);
+                buttonsContainer.addView(buttonCard);
             }
         } catch (JSONException e) {
             e.printStackTrace();
