@@ -48,7 +48,6 @@
       "name": "Introduction",
       "desc": "Bienvenue dans l'Ouest sauvage, où les cowboys règnent et les duels décident du sort des hommes. Votre aventure commence ici. Serez-vous capable de survivre aux rencontres et de devenir le plus grand cowboy du Far West ?",
       "image": "intro_image.jpg",
-      "final": false,
       "actions": [
         {
           "action_name": "Commencer l'aventure", "next": "1"
@@ -65,7 +64,6 @@
         "inventaire": ["revolver", "bourse"]
       },
       "image": "main_character.jpg",
-      "final": false,
       "actions": [
         { "action_name": "Continuer", "next": "2" }
       ]
@@ -74,7 +72,6 @@
       "name": "Arrivée en Ville",
       "desc": "Vous arrivez dans une petite ville poussiéreuse. Le saloon semble être l'endroit le plus animé. Vous avez quelques options :",
       "image": "town.jpg",
-      "final": false,
       "actions": [
         { "action_name": "Entrer dans le saloon", "next": "3" },
         { "action_name": "Aller au bureau du shérif", "next": "11" },
@@ -85,7 +82,6 @@
       "name": "Fouille du Saloon",
       "desc": "En entrant dans le saloon, vous remarquez une affiche partiellement cachée derrière le bar. Il s'agit d'un avis de recherche.",
       "image": "saloon.jpg",
-      "final": false,
       "actions": [
         { "action_name": "Prendre l'avis de recherche", "next": "4", "drop": ["avis_de_recherche"] },
         { "action_name": "Continuer", "next": "4" }
@@ -95,7 +91,6 @@
       "name": "Enquête dans le Saloon",
       "desc": "Après avoir récupéré l'avis de recherche, vous décidez de poser des questions aux clients du saloon pour obtenir des informations sur les crimes dans la ville.",
       "image": "saloon_investigation.jpg",
-      "final": false,
       "actions": [
         { "action_name": "Parler au barman", "next": "5" },
         { "action_name": "Interroger un cowboy solitaire", "next": "6" },
@@ -107,7 +102,6 @@
       "name": "Parler au Barman",
       "desc": "Le barman vous donne des informations utiles sur les allées et venues du bandit. Il mentionne qu'il a été vu récemment dans une ruelle sombre derrière le saloon.",
       "image": "barman.jpg",
-      "final": false,
       "actions": [
         { "action_name": "Aller dans la ruelle sombre", "next": "8" },
         { "action_name": "Continuer à poser des questions", "next": "4" }
@@ -117,7 +111,6 @@
       "name": "Interroger le Cowboy Solitaire",
       "desc": "Le cowboy solitaire vous parle d'un groupe de hors-la-loi qui fait terreur dans la ville.",
       "image": "cowboy.jpg",
-      "final": false,
       "actions": [
         { "action_name": "Continuer à poser des questions", "next": "4", "drop": ["indice_cowboy"] }
       ]
@@ -126,7 +119,6 @@
       "name": "Écouter Discrètement",
       "desc": "Vous écoutez discrètement une conversation mais n'apprenez rien.",
       "image": "conversation.jpg",
-      "final": false,
       "actions": [
         { "action_name": "Continuer à poser des questions", "next": "4" }
       ]
@@ -135,7 +127,6 @@
       "name": "Rencontre avec le Bandit",
       "desc": "Avec les informations recueillies, vous trouvez le bandit dans la ruelle sombre. Un duel s'engage.",
       "image": "bandit.jpg",
-      "final": false,
       "actions": [
         { "action_name": "Duel avec le Bandit", "encounter_id": "duel_bandit" },
         { "action_name": "S'enfuir", "next": "4" }
@@ -145,7 +136,6 @@
       "name": "Victoire contre le Bandit",
       "desc": "Vous avez vaincu le bandit et trouvé une clé sur lui. Qu'est-ce que cette clé pourrait ouvrir ?",
       "image": "victory.jpg",
-      "final": false,
       "actions": [
         { "action_name": "Prendre la clé", "next": "12", "drop": ["cle"] }
       ]
@@ -154,7 +144,7 @@
       "name": "Défaite contre le Bandit",
       "desc": "Vous avez perdu contre le bandit. Vous perdez la vie.",
       "image": "defeat.jpg",
-      "final": false,
+      "win": false,
       "actions": [
         { "action_name": "Suite", "next": "27" }
       ]
@@ -163,7 +153,6 @@
       "name": "Bureau du Shérif",
       "desc": "Vous entrez dans le bureau du shérif avec la clé du bandit et l'avis de recherche. Le shérif, impressionné par votre bravoure, vous propose de l'aider à traquer les hors-la-loi.",
       "image": "sheriff.jpg",
-      "final": false,
       "actions": [
         { "action_name": "Accepter", "next": "12", "require": ["avis_de_recherche", "cle", "indice_cowboy"] },
         { "action_name": "Refuser et quitter", "next": "2" }
@@ -173,7 +162,6 @@
       "name": "Patrouille avec le Shérif",
       "desc": "Vous patrouillez la ville avec le shérif pour repérer des indices sur la cachette des hors-la-loi.",
       "image": "sheriff_patrol.jpg",
-      "final": false,
       "actions": [
         { "action_name": "Parler aux commerçants", "next": "13" },
         { "action_name": "Surveiller les alentours", "next": "14" },
@@ -185,7 +173,6 @@
       "name": "Parler aux Commerçants",
       "desc": "Les commerçants ne savent rien des hors-la-loi mais vous racontent leur vie. Par ennui, vous décidez de partir.",
       "image": "shopkeepers.jpg",
-      "final": false,
       "actions": [
         { "action_name": "Continuer la patrouille", "next": "12" }
       ]
@@ -194,7 +181,6 @@
       "name": "Surveiller les Alentours",
       "desc": "En surveillant les alentours, vous repérez des hommes armés se dirigeant vers la périphérie de la ville.",
       "image": "armed_men.jpg",
-      "final": false,
       "actions": [
         { "action_name": "Suivre les hommes armés", "next": "19" },
         { "action_name": "Continuer la patrouille", "next": "12" }
@@ -204,7 +190,6 @@
       "name": "Aider la Bonne Sœur",
       "desc": "En vous promenant dans la ville, vous rencontrez une bonne sœur en détresse. Elle a perdu son chat et vous demande de l'aider à le retrouver.",
       "image": "nun.jpg",
-      "final": false,
       "actions": [
         { "action_name": "Accepter d'aider", "next": "16" },
         { "action_name": "Refuser et continuer", "next": "12" }
@@ -214,7 +199,6 @@
       "name": "Recherche du Chat",
       "desc": "Après avoir accepté d'aider la bonne sœur, vous explorez la ville et retrouvez le chat errant dans les poubelles.",
       "image": "cat_rescue.jpg",
-      "final": false,
       "actions": [
         { "action_name": "Sauver le chat", "next": "17" },
         { "action_name": "Ignorer le chat", "next": "18" }
@@ -224,7 +208,6 @@
       "name": "Vous avez sauvé le Chat",
       "desc": "Vous grimpez sur le toit et sauvez le chat de la bonne sœur. Elle est très reconnaissante et vous remercie.",
       "image": "saved_cat.jpg",
-      "final": false,
       "actions": [
         { "action_name": "Continuer la patrouille", "next": "12" }
       ]
@@ -233,7 +216,6 @@
       "name": "Vous avez ignoré le Chat",
       "desc": "Vous retournez voir la bonne sœur sans son chat. Elle se met en colère et vous provoque en duel.",
       "image": "angry_nun.jpg",
-      "final": false,
       "actions": [
         { "action_name": "Duel avec le Bandit", "encounter_id": "duel_bonne_soeur" },
         { "action_name": "S'enfuir", "next": "12" }
@@ -243,7 +225,6 @@
       "name": "Planque des Hors-la-loi",
       "desc": "Avec la clé récupérée sur le bandit, vous accédez à la planque des hors-la-loi.",
       "image": "outlaw_hideout.jpg",
-      "final": false,
       "actions": [
         { "action_name": "Essayer de prendre les objets", "next": "20", "require": ["cle"] },
         { "action_name": "Quitter la planque", "next": "12" }
@@ -253,7 +234,6 @@
       "name": "Affrontement Final",
       "desc": "Vous avez trouvé les hors-la-loi et un duel final s'engage avec le chef. Utilisez toutes vos compétences et votre chance pour le vaincre.",
       "image": "final_showdown.jpg",
-      "final": false,
       "actions": [
         { "action_name": "Duel avec le Bandit", "encounter_id": "duel_hors_la_loi" },
         { "action_name": "S'enfuir", "next": "12" }
@@ -263,7 +243,6 @@
       "name": "Victoire Finale",
       "desc": "Vous avez vaincu les hors-la-loi. Vous êtes maintenant le cowboy le plus respecté du Far West.",
       "image": "final_victory.jpg",
-      "final": false,
       "actions": [
         { "action_name": "Prendre le trésor et s'enfuir", "next": "28", "drop": ["trésor_hors_la_loi"] },
         { "action_name": "Rendre le trésor et devenir shérif", "next": "29", "drop": ["étoile_de_shérif"] }
@@ -273,7 +252,7 @@
       "name": "Défaite Finale",
       "desc": "Vous avez perdu contre les hors-la-loi. Votre aventure se termine ici, mais votre légende vivra dans l'Ouest sauvage.",
       "image": "final_defeat.jpg",
-      "final": false,
+      "win": false,
       "actions": [
         { "action_name": "Suite", "next": "27" }
       ]
@@ -282,7 +261,6 @@
       "name": "Exploration des Alentours",
       "desc": "Après de longues minutes à errer dans la ville sans croiser personne, vous décidez de revenir sur vos pas.",
       "image": "deserted_town.jpg",
-      "final": false,
       "actions": [
         { "action_name": "Retour", "next": "2" }
       ]
@@ -291,7 +269,7 @@
       "name": "Défaite contre la Bonne Soeur",
       "desc": "Vous avez perdu contre la Bonne sœur. Vous perdez la vie.",
       "image": "defeat.jpg",
-      "final": false,
+      "win": false,
       "actions": [
         { "action_name": "Suite", "next": "27" }
       ]
@@ -300,7 +278,6 @@
       "name": "Victoire contre la Bonne Soeur",
       "desc": "Vous avez vaincu la Bonne Soeur et trouvé 1 balle spéciale (fait plus de dégâts que vos balles)",
       "image": "victory.jpg",
-      "final": false,
       "actions": [
         { "action_name": "Prendre les balles", "next": "14", "drop": ["balle_speciale"] }
       ]
@@ -318,7 +295,7 @@
       "name": "Vous avez pris le trésor",
       "desc": "Vous avez récupéré leur trésor. Vous êtes le cowboy le plus riche du Far West et vos aventures continuent.",
       "image": "final_victory.jpg",
-      "final": true,
+      "win": true,
       "actions": [
         { "action_name": "Suite", "next": "27" }
       ]
@@ -327,7 +304,7 @@
       "name": "Vous êtes devenu shérif",
       "desc": "Vous êtes devenu shérif de la ville, mais malheureusement vous n'avez pas d'argent, votre femme vous quitte, et vous mourrez seul. C'était le mauvais choix, dommage...",
       "image": "sheriff.jpg",
-      "final": true,
+      "win": false,
       "actions": [
         { "action_name": "Suite", "next": "27" }
       ]

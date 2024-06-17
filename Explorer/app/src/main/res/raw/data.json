@@ -48,7 +48,6 @@
       "name": "Introduction",
       "desc": "Welcome to the Wild West, where cowboys rule and duels decide men's fates. Your adventure begins here. Will you be able to survive the encounters and become the greatest cowboy in the Wild West?",
       "image": "intro_image.jpg",
-      "final": false,
       "actions": [
         { "action_name": "Start the adventure", "next": "1" }
       ]
@@ -63,7 +62,6 @@
         "inventory": ["revolver", "pouch"]
       },
       "image": "main_character.jpg",
-      "final": false,
       "actions": [
         { "action_name": "Continue", "next": "2" }
       ]
@@ -72,7 +70,6 @@
       "name": "Arrival in Town",
       "desc": "You arrive in a small dusty town. The saloon seems to be the liveliest place. You have a few options:",
       "image": "town.jpg",
-      "final": false,
       "actions": [
         { "action_name": "Enter the saloon", "next": "3" },
         { "action_name": "Go to the sheriff's office", "next": "11" },
@@ -83,7 +80,6 @@
       "name": "Searching the Saloon",
       "desc": "Upon entering the saloon, you notice a poster partially hidden behind the bar. It is a wanted poster.",
       "image": "saloon.jpg",
-      "final": false,
       "actions": [
         { "action_name": "Take the wanted poster", "next": "4", "drop": ["wanted_poster"] },
         { "action_name": "Continue", "next": "4" }
@@ -93,7 +89,6 @@
       "name": "Investigating the Saloon",
       "desc": "After retrieving the wanted poster, you decide to ask the saloon patrons for information about the crimes in town.",
       "image": "saloon_investigation.jpg",
-      "final": false,
       "actions": [
         { "action_name": "Talk to the bartender", "next": "5" },
         { "action_name": "Question a lone cowboy", "next": "6" },
@@ -105,7 +100,6 @@
       "name": "Talking to the Bartender",
       "desc": "The bartender gives you useful information about the bandit's comings and goings. He mentions that the bandit was recently seen in a dark alley behind the saloon.",
       "image": "bartender.jpg",
-      "final": false,
       "actions": [
         { "action_name": "Go to the dark alley", "next": "8" },
         { "action_name": "Continue asking questions", "next": "4" }
@@ -115,7 +109,6 @@
       "name": "Questioning the Lone Cowboy",
       "desc": "The lone cowboy tells you about a group of outlaws terrorizing the town.",
       "image": "cowboy.jpg",
-      "final": false,
       "actions": [
         { "action_name": "Continue asking questions", "next": "4", "drop": ["cowboy_clue"] }
       ]
@@ -124,7 +117,6 @@
       "name": "Listening Discreetly",
       "desc": "You discreetly listen to a conversation but learn nothing.",
       "image": "conversation.jpg",
-      "final": false,
       "actions": [
         { "action_name": "Continue asking questions", "next": "4" }
       ]
@@ -133,7 +125,6 @@
       "name": "Encounter with the Bandit",
       "desc": "With the information gathered, you find the bandit in the dark alley. A duel ensues.",
       "image": "bandit.jpg",
-      "final": false,
       "actions": [
         { "action_name": "Duel with the Bandit", "encounter_id": "duel_bandit" },
         { "action_name": "Run away", "next": "4" }
@@ -143,7 +134,6 @@
       "name": "Victory against the Bandit",
       "desc": "You defeated the bandit and found a key on him. What could this key open?",
       "image": "victory.jpg",
-      "final": false,
       "actions": [
         { "action_name": "Take the key", "next": "12", "drop": ["key"] }
       ]
@@ -152,7 +142,7 @@
       "name": "Defeat against the Bandit",
       "desc": "You lost to the bandit. You lose your life.",
       "image": "defeat.jpg",
-      "final": false,
+      "win": false,
       "actions": [
         { "action_name": "Continue", "next": "27" }
       ]
@@ -161,7 +151,6 @@
       "name": "Sheriff's Office",
       "desc": "You enter the sheriff's office with the bandit's key and the wanted poster. The sheriff, impressed by your bravery, offers you to help track down the outlaws.",
       "image": "sheriff.jpg",
-      "final": false,
       "actions": [
         { "action_name": "Accept", "next": "12", "require": ["wanted_poster", "key", "cowboy_clue"] },
         { "action_name": "Decline and leave", "next": "2" }
@@ -171,7 +160,6 @@
       "name": "Patrolling with the Sheriff",
       "desc": "You patrol the town with the sheriff to look for clues about the outlaws' hideout.",
       "image": "sheriff_patrol.jpg",
-      "final": false,
       "actions": [
         { "action_name": "Talk to the merchants", "next": "13" },
         { "action_name": "Watch the surroundings", "next": "14" },
@@ -183,7 +171,6 @@
       "name": "Talking to the Merchants",
       "desc": "The merchants know nothing about the outlaws but tell you about their lives. Out of boredom, you decide to leave.",
       "image": "shopkeepers.jpg",
-      "final": false,
       "actions": [
         { "action_name": "Continue patrolling", "next": "12" }
       ]
@@ -192,7 +179,6 @@
       "name": "Watching the Surroundings",
       "desc": "While watching the surroundings, you spot armed men heading towards the outskirts of town.",
       "image": "armed_men.jpg",
-      "final": false,
       "actions": [
         { "action_name": "Follow the armed men", "next": "19", "drop": [] },
         { "action_name": "Continue patrolling", "next": "12" }
@@ -202,7 +188,6 @@
       "name": "Helping the Nun",
       "desc": "While walking around town, you encounter a distressed nun. She has lost her cat and asks for your help to find it.",
       "image": "nun.jpg",
-      "final": false,
       "actions": [
         { "action_name": "Agree to help", "next": "16" },
         { "action_name": "Decline and continue", "next": "12" }
@@ -212,7 +197,6 @@
       "name": "Finding the Cat",
       "desc": "After agreeing to help the nun, you explore the town and find the cat rummaging through the trash.",
       "image": "cat_rescue.jpg",
-      "final": false,
       "actions": [
         { "action_name": "Save the cat", "next": "17" },
         { "action_name": "Ignore the cat", "next": "18" }
@@ -222,7 +206,6 @@
       "name": "You Saved the Cat",
       "desc": "You climb onto the roof and save the nun's cat. She is very grateful and thanks you.",
       "image": "saved_cat.jpg",
-      "final": false,
       "actions": [
         { "action_name": "Continue patrolling", "next": "12" }
       ]
@@ -231,7 +214,6 @@
       "name": "You Ignored the Cat",
       "desc": "You return to the nun without her cat. She gets angry and challenges you to a duel.",
       "image": "angry_nun.jpg",
-      "final": false,
       "actions": [
         { "action_name": "Duel with the Bandit", "encounter_id": "duel_nun" },
         { "action_name": "Run away", "next": "12" }
@@ -241,7 +223,6 @@
       "name": "Outlaws' Hideout",
       "desc": "With the key retrieved from the bandit, you access the outlaws' hideout.",
       "image": "outlaw_hideout.jpg",
-      "final": false,
       "actions": [
         { "action_name": "Try to take the items", "next": "20", "require": ["key"] },
         { "action_name": "Leave the hideout", "next": "12" }
@@ -251,7 +232,6 @@
       "name": "Final Showdown",
       "desc": "You have found the outlaws and a final duel ensues with the leader. Use all your skills and luck to defeat him.",
       "image": "final_showdown.jpg",
-      "final": false,
       "actions": [
         { "action_name": "Duel with the Bandit", "encounter_id": "duel_outlaw_leader" },
         { "action_name": "Run away", "next": "12" }
@@ -261,7 +241,6 @@
       "name": "Final Victory",
       "desc": "You defeated the outlaws. You are now the most respected cowboy in the Wild West.",
       "image": "final_victory.jpg",
-      "final": false,
       "actions": [
         { "action_name": "Take the treasure and flee", "next": "28", "drop": ["outlaw_treasure"] },
         { "action_name": "Return the treasure and become sheriff", "next": "29", "drop": ["sheriff_star"] }
@@ -271,7 +250,7 @@
       "name": "Final Defeat",
       "desc": "You lost to the outlaws. Your adventure ends here, but your legend will live on in the Wild West.",
       "image": "final_defeat.jpg",
-      "final": false,
+      "win": false,
       "actions": [
         { "action_name": "Continue", "next": "27" }
       ]
@@ -280,7 +259,6 @@
       "name": "Exploring the Surroundings",
       "desc": "After wandering around town for several minutes without encountering anyone, you decide to retrace your steps.",
       "image": "deserted_town.jpg",
-      "final": false,
       "actions": [
         { "action_name": "Return", "next": "2" }
       ]
@@ -289,7 +267,7 @@
       "name": "Defeat against the Nun",
       "desc": "You lost to the nun. You lose your life.",
       "image": "defeat.jpg",
-      "final": false,
+      "win": false,
       "actions": [
         { "action_name": "Continue", "next": "27" }
       ]
@@ -298,7 +276,6 @@
       "name": "Victory against the Nun",
       "desc": "You defeated the nun and found 1 special bullet (deals more damage than the regular bullets you have).",
       "image": "victory.jpg",
-      "final": false,
       "actions": [
         { "action_name": "Take the bullets", "next": "14", "drop": ["special_bullet"] }
       ]
@@ -315,6 +292,7 @@
     "28": {
       "name": "You took the treasure",
       "desc": "You recovered their treasure. You are the richest cowboy in the Wild West, and your adventures continue.",
+	  "win": true,
       "actions": [
         { "action_name": "Continue", "next": "27" }
       ]
@@ -322,6 +300,7 @@
     "29": {
       "name": "You became sheriff",
       "desc": "You became sheriff of the town, but unfortunately, you have no money, your wife leaves you, and you die alone. It was the wrong choice, too bad...",
+	  "win": false,
       "actions": [
         { "action_name": "Continue", "next": "27" }
       ]

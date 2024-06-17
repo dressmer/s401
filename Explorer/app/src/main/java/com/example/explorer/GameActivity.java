@@ -42,6 +42,7 @@ public class GameActivity extends AppCompatActivity {
     private int[] encounterHP = {-1, -1};
     private FightPlayer[] fightPlayers = new FightPlayer[2];
     private final String SERVER_URL = "http://164.132.59.66/s401-assets/";
+    private boolean win = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -248,8 +249,13 @@ public class GameActivity extends AppCompatActivity {
                 buttonsContainer.addView(buttonCard);
             }
 
+            // Check if win status is specified
+            if (locationObject.has("win")) {
+                win = locationObject.getBoolean("win");
+            }
+
             // If final location, display a button to end the game!
-            if (locationObject.getBoolean("final")) {
+            if (locationObject.has("final") && locationObject.getBoolean("final")) {
                 MaterialCardView buttonCard = (MaterialCardView) inflater.inflate(R.layout.button_card, buttonsContainer, false);
                 TextView buttonText = buttonCard.findViewById(R.id.buttonText);
                 buttonText.setText(getResources().getString(R.string.won_game));
@@ -257,7 +263,7 @@ public class GameActivity extends AppCompatActivity {
                 additionalInfosLayout.setVisibility(View.GONE);
                 buttonCard.setOnClickListener(view -> {
                     Intent intent = new Intent();
-                    intent.putExtra("win", true);
+                    intent.putExtra("win", win);
                     setResult(Activity.RESULT_OK, intent);
                     finish();
                 });
