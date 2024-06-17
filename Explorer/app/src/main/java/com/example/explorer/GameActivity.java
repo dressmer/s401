@@ -205,7 +205,23 @@ public class GameActivity extends AppCompatActivity {
                     dropItemIds = null;
                 }
 
-                int next = action.getInt("next");
+                // Get "next" and "encounter_id"
+                int next;
+                if (action.has("next")) {
+                    next = action.getInt("next");
+                }
+                else {
+                    next = -1;
+                }
+
+                String encounter_id;
+                if (action.has("encounter_id")) {
+                    encounter_id = action.getString("encounter_id");
+                }
+                else {
+                    encounter_id = null;
+                }
+
                 buttonCard.setOnClickListener(view -> {
                     // Remove items
                     if (requirementItemIds != null) {
@@ -225,7 +241,13 @@ public class GameActivity extends AppCompatActivity {
                         }
                     }
 
-                    setLocation(next);
+                    if (next != -1) {
+                        setLocation(next);
+                    }
+                    else if (encounter_id != null) {
+                        // TODO: Start encounter
+                        Log.d("GameActivity", "Starting encounter " + encounter_id);
+                    }
                 });
 
                 buttonsContainer.addView(buttonCard);
