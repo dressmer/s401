@@ -3,7 +3,7 @@
     <string name="app_name">Explorateur</string>
     <string name="launch_game">Commencer le jeu</string>
     <string name="app_title_name">%1$s : %2$s</string>
-    <string name="won_game">C\'est gagné !</string>
+    <string name="won_game">Quitter le jeu</string>
     <string name="count_games_played">"Parties jouées : "</string>
     <string name="count_games_won">"Parties gagnées : "</string>
     <string name="text_button_requires">Nécessite :</string>

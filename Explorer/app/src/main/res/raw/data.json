@@ -309,8 +309,7 @@
       "image": "game_over.jpg",
       "final": true,
       "actions": [
-        { "action_name": "Replay the adventure", "next": "0" },
-        { "action_name": "Exit the game", "next": "close_application" }
+        { "action_name": "Replay the adventure", "next": "0" }
       ]
     },
     "28": {

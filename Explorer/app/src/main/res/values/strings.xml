@@ -2,7 +2,7 @@
     <string name="app_name">Explorer</string>
     <string name="launch_game">Start game</string>
     <string name="app_title_name">%1$s: %2$s</string>
-    <string name="won_game">Good game!</string>
+    <string name="won_game">Exit the game</string>
     <string name="count_games_played">"Games played: "</string>
     <string name="count_games_won">"Games won: "</string>
     <string name="text_button_requires">Requires:</string>
