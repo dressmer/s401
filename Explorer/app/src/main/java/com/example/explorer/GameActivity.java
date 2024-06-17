@@ -205,7 +205,7 @@ public class GameActivity extends AppCompatActivity {
                     dropItemIds = null;
                 }
 
-                // Get "next" and "encounter_id"
+                // Get "next"
                 int next;
                 if (action.has("next")) {
                     next = action.getInt("next");
@@ -213,7 +213,7 @@ public class GameActivity extends AppCompatActivity {
                 else {
                     next = -1;
                 }
-
+                // Get "encounter_id"
                 String encounter_id;
                 if (action.has("encounter_id")) {
                     encounter_id = action.getString("encounter_id");
@@ -222,6 +222,7 @@ public class GameActivity extends AppCompatActivity {
                     encounter_id = null;
                 }
 
+                // Set event for when the button is clicked
                 buttonCard.setOnClickListener(view -> {
                     // Remove items
                     if (requirementItemIds != null) {
