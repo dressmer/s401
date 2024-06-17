@@ -183,6 +183,28 @@ public class GameActivity extends AppCompatActivity {
                     additionalInfosLayout.setVisibility(View.GONE);
                 }
 
+                // Get drops
+                String[] dropItemIds;
+                if (action.has("drop")) {
+                    // Get all the drops for said action
+                    JSONArray dropJSON = action.getJSONArray("drop");
+                    dropItemIds = new String[dropJSON.length()];
+                    for (int j = 0; j < dropJSON.length(); j++) {
+                        String dropItemId = dropJSON.getString(j);
+                        dropItemIds[j] = dropItemId;
+
+                        // Make sure the item exists, and if not, create it
+                        if (!itemExists(dropItemId)) {
+                            createItem(dropItemId);
+                            GameObject dropItem = getItem(dropItemId);
+                            dropItem.setAmount(0); // Force amount to 0
+                        }
+                    }
+                }
+                else {
+                    dropItemIds = null;
+                }
+
                 int next = action.getInt("next");
                 buttonCard.setOnClickListener(view -> {
                     // Remove items
@@ -193,6 +215,16 @@ public class GameActivity extends AppCompatActivity {
                             Log.d("GameActivity", "Removed 1x itemId " + requirementItemIds[j] + " (left: " + itemObj.getAmount() + ")");
                         }
                     }
+
+                    // Give drops
+                    if (dropItemIds != null) {
+                        for (int j = 0; j < dropItemIds.length; j++) {
+                            GameObject itemObj = getItem(dropItemIds[j]);
+                            itemObj.setAmount(itemObj.getAmount() + 1);
+                            Log.d("GameActivity", "Added 1x itemId " + dropItemIds[j] + " (left: " + itemObj.getAmount() + ")");
+                        }
+                    }
+
                     setLocation(next);
                 });
 
