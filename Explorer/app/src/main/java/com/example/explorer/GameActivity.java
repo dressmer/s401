@@ -126,14 +126,13 @@ public class GameActivity extends AppCompatActivity {
                 locationImage.setVisibility(View.VISIBLE);
                 // TODO: Temp disable images and force place0.jpg
                 //int resourceId = getResources().getIdentifier(locationObject.getString("image"), "drawable", getPackageName());
-                int resourceId = getResources().getIdentifier("place0", "drawable", getPackageName());
-                locationImage.setImageResource(resourceId);
-                /*
+                //int resourceId = getResources().getIdentifier("place0", "drawable", getPackageName());
+                //locationImage.setImageResource(resourceId);
+
                 Glide.with(this)
-                        .load(SERVER_URL + "bartender.jpg")
+                        .load(SERVER_URL + locationObject.getString("image"))
                         .into(locationImage);
 
-                 */
             } else {
                 locationImage.setVisibility(View.GONE);
             }
