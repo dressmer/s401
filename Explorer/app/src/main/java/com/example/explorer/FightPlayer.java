@@ -64,8 +64,12 @@ public class FightPlayer {
     }
 
     public void attack(int damage) {
-        if (opponent != null) {
-            opponent.setHealth(opponent.getHealth() - damage);
+        if (opponent == null) {
+            return;
+        }
+        int dealtDamage = damage - opponent.getDefense();
+        if (dealtDamage > 0) {
+            opponent.setHealth(opponent.getHealth() - dealtDamage);
         }
     }
 
