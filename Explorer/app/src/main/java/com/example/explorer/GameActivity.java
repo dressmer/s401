@@ -124,9 +124,7 @@ public class GameActivity extends AppCompatActivity {
 
             if (locationObject.has("image")) {
                 locationImage.setVisibility(View.VISIBLE);
-                // TODO: Temp disable images and force place0.jpg
                 //int resourceId = getResources().getIdentifier(locationObject.getString("image"), "drawable", getPackageName());
-                //int resourceId = getResources().getIdentifier("place0", "drawable", getPackageName());
                 //locationImage.setImageResource(resourceId);
 
                 Glide.with(this)
@@ -238,7 +236,6 @@ public class GameActivity extends AppCompatActivity {
                         setLocation(next);
                     }
                     else if (encounter_id != null) {
-                        // TODO: Start encounter
                         Log.d("GameActivity", "Starting encounter " + encounter_id);
                         setEncounter(encounter_id);
                     }
@@ -291,10 +288,12 @@ public class GameActivity extends AppCompatActivity {
 
             if (encounterJSON.has("image")) {
                 locationImage.setVisibility(View.VISIBLE);
-                // TODO: Temp disable images and force place0.jpg
-                //int resourceId = getResources().getIdentifier(locationObject.getString("image"), "drawable", getPackageName());
-                int resourceId = getResources().getIdentifier("place0", "drawable", getPackageName());
-                locationImage.setImageResource(resourceId);
+                //int resourceId = getResources().getIdentifier(encounterJSON.getString("image"), "drawable", getPackageName());
+                //locationImage.setImageResource(resourceId);
+
+                Glide.with(this)
+                        .load(SERVER_URL + encounterJSON.getString("image"))
+                        .into(locationImage);
             } else {
                 locationImage.setVisibility(View.GONE);
             }
