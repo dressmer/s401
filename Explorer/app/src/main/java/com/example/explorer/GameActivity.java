@@ -43,6 +43,7 @@ public class GameActivity extends AppCompatActivity {
     private FightPlayer[] fightPlayers = new FightPlayer[2];
     private final String SERVER_URL = "http://164.132.59.66/s401-assets/";
     private boolean win = false;
+    private final boolean REMOVE_ITEMS_CHOICE_REQUIRED = false; // Removes the item from the player's inventory when it is required and the choice is selected. Required items in encounters will always be removed.
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -218,7 +219,9 @@ public class GameActivity extends AppCompatActivity {
                                 Toast.makeText(this, getResources().getString(R.string.missing_required_items), Toast.LENGTH_SHORT).show();
                                 return;
                             }
-                            itemObj.setAmount(itemObj.getAmount() - 1);
+                            if (REMOVE_ITEMS_CHOICE_REQUIRED) {
+                                itemObj.setAmount(itemObj.getAmount() - 1);
+                            }
                             Log.d("GameActivity", "Removed 1x itemId " + requirementItemIds[j] + " (left: " + itemObj.getAmount() + ")");
                         }
                     }
