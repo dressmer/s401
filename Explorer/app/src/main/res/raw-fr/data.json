@@ -3,42 +3,42 @@
   "start": "0",
   "items": {
     "revolver": {
-        "nom": "Revolver",
+        "name": "Revolver",
         "description": "Arme",
         "image": "revolver.png"
     },
     "bourse": {
-        "nom": "Bourse",
+        "name": "Bourse",
         "description": "Contient des balles",
         "image": "pouch.png"
     },
     "avis_de_recherche": {
-        "nom": "Avis de recherche",
+        "name": "Avis de recherche",
         "description": "Une affiche de recherche avec des informations sur un bandit recherché.",
         "image": "wanted_poster.png"
     },
     "indice_cowboy": {
-        "nom": "Indice Cowboy",
+        "name": "Indice Cowboy",
         "description": "Informations fournies par le cowboy solitaire sur la présence de hors-la-loi dans la ville.",
         "image": "cowboy_clue.png"
     },
     "cle": {
-        "nom": "Clé",
+        "name": "Clé",
         "description": "Permet d'ouvrir la planque des hors-la-loi",
         "image": "key.png"
     },
    "balle_speciale": {
-        "nom": "Balle Spéciale",
+        "name": "Balle Spéciale",
         "description": "Inflige plus de dégâts que la balle standard (+5 Attaque)",
         "image": "special_bullet.png"
     },
     "tresor": {
-        "nom": "Trésor Hors-la-loi",
+        "name": "Trésor Hors-la-loi",
        "description": "Obtenu en vainquant le chef des hors-la-loi",
         "image": "outlaw_treasure.png"
     },
     "etoile": {
-        "nom": "Étoile de Shérif",
+        "name": "Étoile de Shérif",
         "description": "Obtenue en rendant le trésor à la ville",
         "image": "sheriff_star.png"
     }
@@ -318,28 +318,28 @@
         "text": "Duel contre le bandit.",  
         "opponent": 
           {
-           "nom": "Bandit",
-            "vie": 8,
-            "attaque": "2d6+2",
+            "name": "Bandit",
+            "life": 8,
+            "attack": "2d6+2",
             "defense": 4
           },
         "player": {
-          "vie": 10,
-          "attaque": "3d6",
+          "life": 10,
+          "attack": "3d6",
           "defense": 5
         },
         "options": [
           {
-            "choix": "Utiliser une balle réelle",
-            "effet": {
-              "attaque_bonus": 0
+            "choice": "Utiliser une balle réelle",
+            "effect": {
+              "attack_bonus": 0
             }
           },
           {
-            "choix": "Utiliser une balle spéciale",
+            "choice": "Utiliser une balle spéciale",
             "require": ["balle_speciale"],
-            "effet": {
-              "attaque_bonus": 5
+            "effect": {
+              "attack_bonus": 5
             }
           }
         ]
@@ -350,28 +350,28 @@
         "text": "Duel contre la Bonne Soeur.",  
         "opponent": 
           {
-           "nom": "Bonne Soeur",
-            "vie": 5,
-            "attaque": "1d5",
+            "name": "Bonne Soeur",
+            "life": 5,
+            "attack": "1d5",
             "defense": 1
           },
         "player": {
-          "vie": 10,
-          "attaque": "3d6",
+          "life": 10,
+          "attack": "3d6",
           "defense": 5
         },
         "options": [
           {
-            "choix": "Utiliser une balle réelle",
-            "effet": {
-              "attaque_bonus": 0
+            "choice": "Utiliser une balle réelle",
+            "effect": {
+              "attack_bonus": 0
             }
           },
           {
-            "choix": "Utiliser une balle spéciale",
+            "choice": "Utiliser une balle spéciale",
             "require": ["balle_speciale"],
-            "effet": {
-              "attaque_bonus": 5
+            "effect": {
+              "attack_bonus": 5
             }
           }
         ]
@@ -382,28 +382,28 @@
         "text": "Duel contre le chef des hors la loi.",  
         "opponent": 
           {
-           "nom": "Chef des hors la loi",
-            "vie": 12,
-            "attaque": "3d6+6",
+            "name": "Chef des hors la loi",
+            "life": 12,
+            "attack": "3d6+6",
             "defense": 7
           },
         "player": {
-          "vie": 10,
-          "attaque": "3d6",
+          "life": 10,
+          "attack": "3d6",
           "defense": 5
         },
         "options": [
           {
-            "choix": "Utiliser une balle réelle",
-            "effet": {
-              "attaque_bonus": 0
+            "choice": "Utiliser une balle réelle",
+            "effect": {
+              "attack_bonus": 0
             }
           },
           {
-            "choix": "Utiliser une balle spéciale",
+            "choice": "Utiliser une balle spéciale",
             "require": ["balle_speciale"],
-            "effet": {
-              "attaque_bonus": 5
+            "effect": {
+              "attack_bonus": 5
             }
           }
         ]
