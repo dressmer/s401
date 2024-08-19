@@ -12,7 +12,7 @@
         "description": "Contient des balles",
         "image": "pouch.png"
     },
-    "avis_recherche": {
+    "avis_de_recherche": {
         "nom": "Avis de recherche",
         "description": "Une affiche de recherche avec des informations sur un bandit recherché.",
         "image": "wanted_poster.png"
@@ -37,7 +37,7 @@
        "description": "Obtenu en vainquant le chef des hors-la-loi",
         "image": "outlaw_treasure.png"
     },
-    "etoiles": {
+    "etoile": {
         "nom": "Étoile de Shérif",
         "description": "Obtenue en rendant le trésor à la ville",
         "image": "sheriff_star.png"
@@ -244,8 +244,8 @@
       "desc": "Vous avez vaincu les hors-la-loi. Vous êtes maintenant le cowboy le plus respecté du Far West.",
       "image": "final_victory.jpg",
       "actions": [
-        { "action_name": "Prendre le trésor et s'enfuir", "next": "28", "drop": ["trésor_hors_la_loi"] },
-        { "action_name": "Rendre le trésor et devenir shérif", "next": "29", "drop": ["étoile_de_shérif"] }
+        { "action_name": "Prendre le trésor et s'enfuir", "next": "28", "drop": ["tresor"] },
+        { "action_name": "Rendre le trésor et devenir shérif", "next": "29", "drop": ["etoile"] }
       ]
     },
     "22": {
